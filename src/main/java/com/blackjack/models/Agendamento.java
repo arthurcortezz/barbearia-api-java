@@ -19,9 +19,9 @@ public class Agendamento implements Serializable{
 
 	private String nome;
 	
-	private String celular;
-	
 	private String email;
+	
+	private String celular;
 
 	private String data;
 	

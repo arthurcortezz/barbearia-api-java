@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.blackjack.models.Conta;
 import com.blackjack.repository.ContaRepository;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping(value="/conta")
 public class ContaController {
@@ -51,7 +51,7 @@ public class ContaController {
 		Page<Conta> result = ct.procurarConta(email, pageable);
 		return ResponseEntity.ok(result);
 	}
-	
+
 	@GetMapping(value="/buscarUsuario")
 	public ResponseEntity<Conta> BuscarUsuario(
 			@RequestParam(defaultValue="") Long id,

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.blackjack.models.Agendamento;
 import com.blackjack.repository.AgendamentoRepository;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping(value="/agendamento")
 public class AgendamentoController {
