@@ -3,6 +3,7 @@ package com.blackjack.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,12 +31,17 @@ public class ContaController {
 	}	
 	
 	@GetMapping(value="/login")
-	public ResponseEntity<Page<Conta>> FazerLogin(
+	public ResponseEntity<Conta> FazerLogin(
 			@RequestParam(defaultValue="") String email,
-			@RequestParam(defaultValue="") String senha,
-			Pageable pageable){
-		Page<Conta> result = ct.fazerLogin(email, senha, pageable);
-		return ResponseEntity.ok(result);
+			@RequestParam(defaultValue="") String senha){
+		Long result = ct.fazerLogin(email, senha);
+		if(result != null) {
+			Conta response = ct.findByCodigo(result);
+			return ResponseEntity.ok(response);
+		}else {
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		}
+		
 	}
 	
 	@GetMapping(value="/verificaEmail")
