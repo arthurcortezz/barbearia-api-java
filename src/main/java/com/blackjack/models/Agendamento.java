@@ -6,9 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name = "Agendamento")
 public class Agendamento implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -16,6 +18,8 @@ public class Agendamento implements Serializable{
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private long codigo;
+	
+	private long codigoUsuario;
 
 	private String nome;
 	
@@ -83,6 +87,14 @@ public class Agendamento implements Serializable{
 
 	public void setLocal(String local) {
 		this.local = local;
+	}
+
+	public long getCodigoUsuario() {
+		return codigoUsuario;
+	}
+
+	public void setCodigoUsuario(long codigoUsuario) {
+		this.codigoUsuario = codigoUsuario;
 	}
 	
 	

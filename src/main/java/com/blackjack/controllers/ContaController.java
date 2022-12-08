@@ -24,11 +24,17 @@ public class ContaController {
 	@Autowired
 	private ContaRepository ct;
 	
-	@RequestMapping(value="/cadastro", method=RequestMethod.POST)
+	@RequestMapping(value="/criar", method=RequestMethod.POST)
 	public Conta criar(@RequestBody Conta conta){
 		ct.save(conta);
 		return conta;
 	}	
+	
+	@RequestMapping(value="/alterar", method=RequestMethod.POST)
+	public ResponseEntity<String> alterar(@RequestBody Conta conta){
+		ct.updateConta(conta.getNome(), conta.getCelular(), conta.getEmail(), conta.getSenha(), conta.getCodigo());
+		return new ResponseEntity<String>("Agendamento alterado com sucesso!", HttpStatus.OK);
+	}
 	
 	@GetMapping(value="/login")
 	public ResponseEntity<Conta> FazerLogin(

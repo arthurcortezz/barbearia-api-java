@@ -19,6 +19,7 @@ public class Conta{
 	private String celular;	
 	private String email;
 	private String senha;
+	private String permissao;
 
 	public long getCodigo() {
 		return codigo;
@@ -58,5 +59,13 @@ public class Conta{
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getPermissao() {
+		return permissao;
+	}
+
+	public void setPermissao(String permissao) {
+		this.permissao = permissao;
 	}	
 }
